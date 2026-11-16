@@ -1,0 +1,142 @@
+{
+    "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+    "format": 1,
+    "name": "Uncharted: The Nathan Drake Collection for PC",
+    "game": {
+        "kind": "folder",
+        "label": "Your PS4 dump folder of Uncharted: The Nathan Drake Collection (CUSA02344 or CUSA02320) with the 1.02 update, merged in or in a folder next to it.",
+        "check": {
+            "file": "eboot.bin"
+        }
+    },
+    "start": {
+        "program": [
+            "Uncharted Launcher.exe"
+        ],
+        "args": [
+            "--play",
+            "--game",
+            "{game}"
+        ]
+    },
+    "config": [
+        {
+            "id": "main",
+            "format": "ini",
+            "file": [
+                {
+                    "path": "{install}/ucndc.ini"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "display_mode",
+            "label": "Screen mode",
+            "help": "Window, borderless or full screen. F11 switches between window and full screen during play.",
+            "choices": [
+                {
+                    "label": "Window",
+                    "set": {
+                        "display_mode": "windowed"
+                    }
+                },
+                {
+                    "label": "Borderless",
+                    "set": {
+                        "display_mode": "borderless"
+                    }
+                },
+                {
+                    "label": "Full screen",
+                    "set": {
+                        "display_mode": "fullscreen"
+                    }
+                }
+            ],
+            "defaults": {
+                "display_mode": "windowed"
+            }
+        },
+        {
+            "id": "vsync",
+            "label": "V-Sync",
+            "help": "Stops screen tearing.",
+            "choices": [
+                {
+                    "label": "Off",
+                    "set": {
+                        "vsync": "0"
+                    }
+                },
+                {
+                    "label": "On",
+                    "set": {
+                        "vsync": "1"
+                    }
+                }
+            ],
+            "defaults": {
+                "vsync": "1"
+            }
+        },
+        {
+            "id": "fps_limit",
+            "label": "Frame rate",
+            "help": "Limits how many frames per second the game draws.",
+            "choices": [
+                {
+                    "label": "No limit",
+                    "set": {
+                        "fps_limit": "0"
+                    }
+                },
+                {
+                    "label": "30 fps",
+                    "set": {
+                        "fps_limit": "30"
+                    }
+                },
+                {
+                    "label": "60 fps",
+                    "set": {
+                        "fps_limit": "60"
+                    }
+                }
+            ],
+            "defaults": {
+                "fps_limit": "0"
+            }
+        }
+    ],
+    "saves": [
+        "{install}/user"
+    ],
+    "folders": {
+        "saves": [
+            {
+                "path": "{install}/user"
+            }
+        ],
+        "logs": [
+            {
+                "path": "{install}/user"
+            }
+        ]
+    },
+    "actions": [
+        {
+            "id": "saves",
+            "label": "Saves",
+            "help": "Your saves, settings and the last session's log.",
+            "open": "saves"
+        }
+    ],
+    "requires": [
+        "start",
+        "files.folder",
+        "settings.ini",
+        "settings.choices"
+    ]
+}
